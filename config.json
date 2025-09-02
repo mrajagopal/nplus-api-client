@@ -1,6 +1,6 @@
 {
   "nginx": {
-    "ipAddress": "10.146.191.116",
+    "ipAddress": "localhost",
     "port": 8080
   },
   "logLevel": "debug"

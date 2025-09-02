@@ -53,13 +53,6 @@ func loadConfig(filename string) (*Config, error) {
 
 func main() {
 
-	duration := "1440h"
-	t, err := time.ParseDuration(duration)
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Printf("Duration is %f\n", t.Seconds())
-
 	// Read config file
 	cfg, err := loadConfig("config.json")
 	if err != nil {
@@ -69,18 +62,20 @@ func main() {
 	ipAddress := cfg.Nginx.IPAddress
 	port := cfg.Nginx.Port
 	fmt.Printf("Nginx IP Address: %s, Port: %d\n", ipAddress, port)
+
 	httpClient := &http.Client{}
 	c, err := client.NewNginxClient(fmt.Sprintf("http://%s:%d/api", ipAddress, port), client.WithHTTPClient(httpClient))
 	if err != nil {
 		fmt.Println(err)
 	}
-	// fmt.Printf("Nginx client created: %+v\n", c)
+
 	upstreams, err := c.GetUpstreams(context.Background())
 	if err != nil {
-		panic(err)
-	}
-	for name, upstream := range *upstreams {
-		fmt.Printf("Upstream name: %s, Upstream: %+v\n", name, upstream.Zone)
+		fmt.Printf("could not get upstreams, %v\n", err)
+	} else {
+		for name, upstream := range *upstreams {
+			fmt.Printf("Upstream name: %s, Upstream: %+v\n", name, upstream.Zone)
+		}
 	}
 
 	licenseData, err := c.GetNginxLicense(context.Background())

@@ -69,6 +69,15 @@ func main() {
 		fmt.Println(err)
 	}
 
+	// Get NGINX Version
+	nInfo, err := c.GetNginxInfo(context.Background())
+	if err != nil {
+		fmt.Printf("could not get NGINX version, %v\n", err)
+	} else {
+		fmt.Printf("NGINX version: %s\n", nInfo.Version)
+		fmt.Printf("NGINX build: %s\n", nInfo.Build)
+	}
+
 	upstreams, err := c.GetUpstreams(context.Background())
 	if err != nil {
 		fmt.Printf("could not get upstreams, %v\n", err)

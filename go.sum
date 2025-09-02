@@ -1,0 +1,4 @@
+github.com/nginx/nginx-plus-go-client/v2 v2.4.0 h1:4c7V57CLCZUOxQCUcS9G8a5MClzdmxByBm+f4zKMzAY=
+github.com/nginx/nginx-plus-go-client/v2 v2.4.0/go.mod h1:P+dIP2oKYzFoyf/zlLWQa8Sf+fHb+CclOKzxAjxpvug=
+golang.org/x/sync v0.13.0 h1:AauUjRAJ9OSnvULf/ARrrVywoJDy0YS2AwQ98I37610=
+golang.org/x/sync v0.13.0/go.mod h1:1dzgHSNfp02xaA81J2MS99Qcpr2w7fw1gpm99rleRqA=

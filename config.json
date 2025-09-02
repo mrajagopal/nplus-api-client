@@ -1,0 +1,7 @@
+{
+  "nginx": {
+    "ipAddress": "10.146.191.116",
+    "port": 8080
+  },
+  "logLevel": "debug"
+}
